@@ -2,7 +2,7 @@
 import { UploadButton } from "@/lib/uploadthing";
 import React from "react";
 import { Button } from "./ui/button";
-import { Upload, XIcon } from "lucide-react";
+import { Upload } from "lucide-react";
 
 interface ImageUploadProps {
     onChange: (url: string) => void;
@@ -16,9 +16,9 @@ export default function ImageUpload({ endpoint, onChange, value }: ImageUploadPr
         return (
             <div>
                 <img src={value} alt="Upload" className="rounded-md w-20 object-cover" />
-                <Button onClick={() => onChange("")} className="absolute top-0 right-0 p-1 bg-red-500 rounded-full shadow-sm">
+                {/* <Button onClick={() => onChange("")} className="absolute top-0 right-0 p-1 bg-red-500 rounded-full shadow-sm">
                     <XIcon className="h-4 w-4 text-white" />
-                </Button>
+                </Button> */}
             </div>
         )
     }
