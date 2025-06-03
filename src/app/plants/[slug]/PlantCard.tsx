@@ -40,7 +40,7 @@ const PlantCard = ({plant}: PlantCardProps) => {
                     <div className="font-bold text-foreground text-4xl">
                         ${plant.plantById.price}
                     </div>
-                    <Button className="bg-foreground">
+                    <Button>
                         {plant.plantById?.category}
                     </Button>
                     <p className="text-lg text-muted-foreground">

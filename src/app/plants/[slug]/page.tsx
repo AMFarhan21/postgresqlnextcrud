@@ -12,7 +12,8 @@ type PageParams = {
 }
 
 export async function generateMetadata({params}: PageParams): Promise<Metadata> {
-    const [id] = params.slug.split("--")
+    const { slug } = await params
+    const [id] = slug.split("--")
     const plant = await getPlantsById(id)
 
     return {
@@ -21,9 +22,10 @@ export async function generateMetadata({params}: PageParams): Promise<Metadata> 
     }
 }
 
-const page = async({params}: PageParams) => {
+export default async function Page({params}: PageParams) {
+    const { slug } = await params
     const user = await stackServerApp.getUser()
-    const [id] = params.slug.split("--")
+    const [id] = slug.split("--")
     const plant = await getPlantsById(id)
 
     if(!user) return <div className='flex justify-center mt-20'><SignIn /></div>
@@ -34,5 +36,3 @@ const page = async({params}: PageParams) => {
         </div>
     )
 }
-
-export default page
