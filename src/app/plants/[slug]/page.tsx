@@ -3,6 +3,7 @@ import PlantCard from './PlantCard'
 import { getPlantsById } from '@/app/actions/plant.action'
 import { stackServerApp } from '@/stack'
 import { SignIn } from '@stackframe/stack'
+import { Metadata } from 'next'
 
 type PageParams = {
     params: {
@@ -10,7 +11,7 @@ type PageParams = {
     }
 }
 
-export async function generateMetadata({params}: PageParams) {
+export async function generateMetadata({params}: PageParams): Promise<Metadata> {
     const [id] = params.slug.split("--")
     const plant = await getPlantsById(id)
 
