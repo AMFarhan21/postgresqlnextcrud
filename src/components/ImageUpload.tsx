@@ -1,8 +1,6 @@
 "use client";
 import { UploadButton } from "@/lib/uploadthing";
 import React from "react";
-import { Button } from "./ui/button";
-import { Upload } from "lucide-react";
 
 interface ImageUploadProps {
     onChange: (url: string) => void;
@@ -25,24 +23,28 @@ export default function ImageUpload({ endpoint, onChange, value }: ImageUploadPr
 
     return (
         <div className="w-25 flex items-center">
-            <Button variant={"outline"} className="text-foreground flex text-center items-center">
-                <Upload /> Upload Image
-                <UploadButton
+            <UploadButton
                 endpoint={endpoint}
+                appearance={{
+                    button: {
+                        color: "var(--background)",
+                        background: "var(--foreground)",
+                        padding: "0 8px"
+                    },
+                }}
                 onClientUploadComplete={(res) => {
-                    // Do something with the response
+                    // Penanganan setelah unggahan selesai
                     console.log("Files: ", res);
-                    // Update the image here
                     if (res && res[0]?.ufsUrl) {
-                        onChange(res[0].ufsUrl)
+                        onChange(res[0].ufsUrl);
                     }
                 }}
                 onUploadError={(error: Error) => {
-                    // Do something with the error.
+                    // Penanganan jika terjadi kesalahan saat unggah
                     alert(`ERROR! ${error.message}`);
                 }}
             />
-            </Button>
+
         </div>
     );
 }
