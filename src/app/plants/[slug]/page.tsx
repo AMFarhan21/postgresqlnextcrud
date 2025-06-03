@@ -4,7 +4,13 @@ import { getPlantsById } from '@/app/actions/plant.action'
 import { stackServerApp } from '@/stack'
 import { SignIn } from '@stackframe/stack'
 
-export async function generateMetadata({params}: {params: {slug: string}}) {
+type PageParams = {
+    params: {
+        slug: string
+    }
+}
+
+export async function generateMetadata({params}: PageParams) {
     const [id] = params.slug.split("--")
     const plant = await getPlantsById(id)
 
@@ -14,7 +20,7 @@ export async function generateMetadata({params}: {params: {slug: string}}) {
     }
 }
 
-const page = async({params}: {params: {slug: string}}) => {
+const page = async({params}: PageParams) => {
     const user = await stackServerApp.getUser()
     const [id] = params.slug.split("--")
     const plant = await getPlantsById(id)
