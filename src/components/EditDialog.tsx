@@ -18,7 +18,7 @@ import { ComboBox } from "./ComboBox";
 import { Textarea } from "./ui/textarea";
 import { editPlant } from "@/app/actions/plant.action";
 import toast from "react-hot-toast";
-import { Sprout } from "lucide-react";
+import { Edit } from "lucide-react";
 import ImageUpload from "./ImageUpload";
 
 type Plant = NonNullable<Awaited<ReturnType<typeof editPlant>>>
@@ -60,8 +60,8 @@ export default function EditDialog({ plant }: EditDialogProps) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="default" className="">
-                    <Sprout />
+                <Button variant="secondary" className="">
+                    <Edit />
                     Edit Plant
                 </Button>
             </AlertDialogTrigger>
